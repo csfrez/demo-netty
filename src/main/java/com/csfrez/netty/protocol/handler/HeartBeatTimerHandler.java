@@ -18,6 +18,12 @@ public class HeartBeatTimerHandler extends ChannelInboundHandlerAdapter {
 	}
 
 	private void scheduleSendHeartBeat(ChannelHandlerContext ctx) {
+		ctx.channel().eventLoop().execute(new Runnable() {
+		    @Override
+		    public void run() {
+		        //...
+		    }
+		});
 		System.out.println(System.currentTimeMillis() + ":" +Thread.currentThread().getName() + "=>发送心跳报文");
 		ctx.executor().schedule(() -> {
 
